@@ -31,27 +31,16 @@
         /* color: white; Tailwind's text-gray-300 on body handles this */
         /* background-color: black; Tailwind's bg-black on body handles this */
       }
+      .hover-golden-text:hover {
+        color: #8a2be2; /* Example: amber-600. Adjust as needed */
+      }
       .dark-bg {
         background-color: black;
       }
       .darker-bg {
         background-color: black;
       }
-      .golden-text {
-        color: white; /* Consider if this is still needed or can be text-white */
-      }
-      .golden-border {
-        border-color: #d4af37; /* You can define this color in tailwind.config.js */
-      }
-      .hover-golden-bg:hover {
-        background-color: #d4af37; /* Define in tailwind.config.js */
-      }
-      .hover-golden-text:hover {
-        color: #d4af37; /* Define in tailwind.config.js */
-      }
-      .hover-dark-text:hover {
-        color: #1a1a1a; /* Define in tailwind.config.js */
-      }
+
       .card {
         background-color: black; /* Or bg-black */
         border-radius: 0.5rem; /* Or rounded-lg */
@@ -188,22 +177,34 @@
           <img src="logo-2.png" alt="Logo" class="ml-1 w-24" />
         </div>
 
-        <nav class="hidden md:flex space-x-6">
+        <nav class="hidden md:flex space-x-10">
           <a
             href="#services"
-            class="text-gray-400 hover-golden-text transition duration-300"
-            >Services</a
+            class="text-white font-black hover-golden-text transition duration-300 relative group py-2 text-lg"
           >
+            Services
+            <span
+              class="absolute -bottom-0.5 left-1/2 w-0 h-[2px] bg-[#8a2be2] group-hover:w-full group-hover:left-0 transform group-hover:-translate-x-0 -translate-x-1/2 transition-all duration-300 ease-in-out"
+            ></span>
+          </a>
           <a
             href="#work"
-            class="text-gray-400 hover-golden-text transition duration-300"
-            >Work</a
+            class="text-white font-black hover-golden-text transition duration-300 relative group py-2 text-lg"
           >
+            Work
+            <span
+              class="absolute -bottom-0.5 left-1/2 w-0 h-[2px] bg-[#8a2be2] group-hover:w-full group-hover:left-0 transform group-hover:-translate-x-0 -translate-x-1/2 transition-all duration-300 ease-in-out"
+            ></span>
+          </a>
           <a
             href="#contact"
-            class="text-gray-400 hover-golden-text transition duration-300"
-            >Contact</a
+            class="text-white font-black hover-golden-text transition duration-300 relative group py-2 text-lg"
           >
+            Contact
+            <span
+              class="absolute -bottom-0.5 left-1/2 w-0 h-[2px] bg-[#8a2be2] group-hover:w-full group-hover:left-0 transform group-hover:-translate-x-0 -translate-x-1/2 transition-all duration-300 ease-in-out"
+            ></span>
+          </a>
         </nav>
 
         <button
@@ -233,17 +234,17 @@
       >
         <a
           href="#services"
-          class="block py-2 text-gray-400 hover-golden-text transition duration-300"
+          class="block py-2 text-white font-black hover-golden-text transition duration-300"
           >Services</a
         >
         <a
           href="#work"
-          class="block py-2 text-gray-400 hover-golden-text transition duration-300"
+          class="block py-2 text-white font-black hover-golden-text transition duration-300"
           >Work</a
         >
         <a
           href="#contact"
-          class="block py-2 text-gray-400 hover-golden-text transition duration-300"
+          class="block py-2 text-white font-black hover-golden-text transition duration-300"
           >Contact</a
         >
       </nav>
@@ -671,6 +672,151 @@
               </div>
             </div>
 
+            <div
+              class="portfolio-project-item bg-gray-800 rounded-lg overflow-hidden shadow-xl group transform hover:scale-105 transition-all duration-300"
+            >
+              <div
+                id="new-project-s-series-carousel"
+                class="relative"
+                data-carousel="static"
+              >
+                <div class="relative h-80 md:h-96 overflow-hidden rounded-t-lg">
+                  <div
+                    class="hidden duration-700 ease-in-out"
+                    data-carousel-item
+                  >
+                    <img
+                      src="s1.png"
+                      class="absolute block w-full h-full object-contain top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-2"
+                      alt="Project Showcase Image s1"
+                    />
+                  </div>
+                  <div
+                    class="hidden duration-700 ease-in-out"
+                    data-carousel-item
+                  >
+                    <img
+                      src="s2.png"
+                      class="absolute block w-full h-full object-contain top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-2"
+                      alt="Project Showcase Image s2"
+                    />
+                  </div>
+                  <div
+                    class="hidden duration-700 ease-in-out"
+                    data-carousel-item
+                  >
+                    <img
+                      src="s3.png"
+                      class="absolute block w-full h-full object-contain top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-2"
+                      alt="Project Showcase Image s3"
+                    />
+                  </div>
+                  <div
+                    class="hidden duration-700 ease-in-out"
+                    data-carousel-item
+                  >
+                    <img
+                      src="s4.png"
+                      class="absolute block w-full h-full object-contain top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-2"
+                      alt="Project Showcase Image s4"
+                    />
+                  </div>
+                  <div
+                    class="hidden duration-700 ease-in-out"
+                    data-carousel-item
+                  >
+                    <img
+                      src="s5.png"
+                      class="absolute block w-full h-full object-contain top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-2"
+                      alt="Project Showcase Image s5"
+                    />
+                  </div>
+                  <div
+                    class="hidden duration-700 ease-in-out"
+                    data-carousel-item
+                  >
+                    <img
+                      src="s6.png"
+                      class="absolute block w-full h-full object-contain top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-2"
+                      alt="Project Showcase Image s6"
+                    />
+                  </div>
+                  <div
+                    class="hidden duration-700 ease-in-out"
+                    data-carousel-item
+                  >
+                    <img
+                      src="s7.png"
+                      class="absolute block w-full h-full object-contain top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-2"
+                      alt="Project Showcase Image s7"
+                    />
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                  data-carousel-prev
+                >
+                  <span
+                    class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 group-focus:ring-4 group-focus:ring-white/70 group-focus:outline-none"
+                  >
+                    <svg
+                      class="w-4 h-4 text-white"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 6 10"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 1 1 5l4 4"
+                      />
+                    </svg>
+                    <span class="sr-only">Previous</span>
+                  </span>
+                </button>
+                <button
+                  type="button"
+                  class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                  data-carousel-next
+                >
+                  <span
+                    class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 group-focus:ring-4 group-focus:ring-white/70 group-focus:outline-none"
+                  >
+                    <svg
+                      class="w-4 h-4 text-white"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 6 10"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="m1 9 4-4-4-4"
+                      />
+                    </svg>
+                    <span class="sr-only">Next</span>
+                  </span>
+                </button>
+              </div>
+              <div class="p-5">
+                <p
+                  class="text-xs font-semibold tracking-wider text-gray-500 uppercase mb-1"
+                >
+                  WEB APPLICATION
+                </p>
+                <h3 class="text-lg font-semibold text-white leading-tight">
+                  United Star Cooperative Website
+                </h3>
+              </div>
+            </div>
             <div
               class="portfolio-project-item bg-gray-800 rounded-lg overflow-hidden shadow-xl group transform hover:scale-105 transition-all duration-300"
             >
