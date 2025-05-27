@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link
+      rel="icon"
+      href="logo-title.png"
+      type="image/x-icon"
+      sizes="192x192"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      /* It's good practice to move as much of this custom CSS into Tailwind
+         if possible, or keep it minimal. For styles that are hard to
+         replicate with utility classes, keeping them here is fine. */
+      body {
+        font-family: "Inter", sans-serif;
+        line-height: 1.6;
+        /* color: white; Tailwind's text-gray-300 on body handles this */
+        /* background-color: black; Tailwind's bg-black on body handles this */
+      }
+      .dark-bg {
+        background-color: black;
+      }
+      .darker-bg {
+        background-color: black;
+      }
+      .golden-text {
+        color: white; /* Consider if this is still needed or can be text-white */
+      }
+      .golden-border {
+        border-color: #d4af37; /* You can define this color in tailwind.config.js */
+      }
+      .hover-golden-bg:hover {
+        background-color: #d4af37; /* Define in tailwind.config.js */
+      }
+      .hover-golden-text:hover {
+        color: #d4af37; /* Define in tailwind.config.js */
+      }
+      .hover-dark-text:hover {
+        color: #1a1a1a; /* Define in tailwind.config.js */
+      }
+      .card {
+        background-color: black; /* Or bg-black */
+        border-radius: 0.5rem; /* Or rounded-lg */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Or shadow-md/lg/xl */
+        padding: 2rem; /* Or p-8 */
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .portfolio-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 0.5rem; /* Or rounded-lg */
+      }
+      .portfolio-item img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      .portfolio-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.6);
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 1rem;
+        opacity: 0;
+        /* Consider using Tailwind's group-hover utilities for visibility */
+      }
+
+      /* Flowbite specific styles should ideally be handled by Flowbite's JS
+         interacting with Tailwind classes. If these are overrides, ensure they
+         are necessary after setting up Tailwind properly. */
+      .flowbite-carousel-wrapper .relative {
+        width: 80vw;
+        height: 200px;
+      }
+      @media (min-width: 768px) {
+        .flowbite-carousel-wrapper .relative {
+          height: 600px;
+        }
+      }
+      .flowbite-carousel-wrapper [data-carousel-item] img {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: block;
+        padding: 1rem; /* Or p-4 */
+      }
+      .flowbite-carousel-wrapper [data-carousel-prev],
+      .flowbite-carousel-wrapper [data-carousel-next] {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+      .flowbite-carousel-wrapper [data-carousel-prev]:hover,
+      .flowbite-carousel-wrapper [data-carousel-next]:hover {
+        background-color: rgba(255, 255, 255, 0.4);
+      }
+      .flowbite-carousel-wrapper [data-carousel-slide-to] {
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+      .flowbite-carousel-wrapper [data-carousel-slide-to][aria-current="true"] {
+        background-color: #d4af37; /* Define as a custom color in Tailwind */
+      }
+
+      .header-link {
+        color: #ffffff; /* Or text-white */
+        transition: color 0.3s ease;
+      }
+      .header-link:hover {
+        color: #d4af37; /* Custom hover color */
+      }
+      .header-logo-text {
+        color: #ffffff; /* Or text-white */
+      }
+      .bg_slider {
+        --initialTextColor: #d4af37; /* Define custom properties or Tailwind colors */
+        --slideTextColor: white;
+        --initialBgColor: white;
+        --slideBgColor: #d4af37;
+        color: var(--initialTextColor);
+        background-image: linear-gradient(
+          90deg,
+          var(--initialBgColor) 0%,
+          var(--initialBgColor) 50%,
+          var(--slideBgColor) 50%,
+          var(--slideBgColor) 100%
+        );
+        background-size: 200%;
+        transition: background-position 0.3s cubic-bezier(0.47, 0.1, 1, 0.63),
+          color 0.2s linear;
+        transition-delay: 0s, 0.5s;
+      }
+      .bg_slider:hover {
+        background-position: -100% 100%;
+        color: #2a2a2a; /* Custom color */
+      }
+      .social-icon {
+        font-size: 2rem; /* Can be text-3xl or text-4xl etc. */
+        color: #d4af37; /* Custom color */
+        transition: color 0.3s ease;
+      }
+      .social-icon:hover {
+        color: #ffffff; /* Or hover:text-white */
+      }
+
+      .hero-name-outline {
+        color: transparent;
+        -webkit-text-stroke-width: 2px;
+        -webkit-text-stroke-color: white;
+        text-stroke-width: 2px;
+        text-stroke-color: white;
+      }
+    </style>
+  </head>
+  <body class="bg-black text-gray-300">
+    <header class="header-black-bg shadow-md">
+      <div
+        class="container mx-auto px-4 py-1 flex justify-between items-center"
+      >
+        <div class="text-1xl header-logo-text flex items-center">
+          <p class="-mr-4">coded by</p>
+          <img src="logo-2.png" alt="Logo" class="ml-1 w-24" />
+        </div>
+
+        <nav class="hidden md:flex space-x-6">
+          <a
+            href="#about"
+            class="text-gray-400 hover-golden-text transition duration-300"
+            >About</a
+          >
+          <a
+            href="#work"
+            class="text-gray-400 hover-golden-text transition duration-300"
+            >Work</a
+          >
+          <a
+            href="#contact"
+            class="text-gray-400 hover-golden-text transition duration-300"
+            >Contact</a
+          >
+        </nav>
+
+        <button
+          id="mobile-menu-button"
+          class="md:hidden text-white hover:text-golden-text focus:outline-none"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+        </button>
+      </div>
+
+      <nav
+        id="mobile-menu"
+        class="md:hidden header-purple-bg px-4 pt-2 pb-4 space-y-2 hidden"
+      >
+        <a
+          href="#about"
+          class="block py-2 text-gray-400 hover-golden-text transition duration-300"
+          >About</a
+        >
+        <a
+          href="#work"
+          class="block py-2 text-gray-400 hover-golden-text transition duration-300"
+          >Work</a
+        >
+        <a
+          href="#contact"
+          class="block py-2 text-gray-400 hover-golden-text transition duration-300"
+          >Contact</a
+        >
+      </nav>
+    </header>
+
+    <main>
+      <section
+        class="bg-black text-white min-h-screen flex flex-col justify-center items-center py-16 md:py-20 px-4 sm:px-6 lg:px-8"
+      >
+        <div class="text-center mb-12 md:mb-16 lg:mb-20">
+          <h1
+            class="font-extrabold text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl tracking-normal sm:tracking-wide uppercase hero-name-outline"
+          >
+            FRANZ O. PAMORADA
+          </h1>
+        </div>
+
+        <div
+          class="container mx-auto w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-x-8 lg:gap-x-12 gap-y-10 md:gap-y-0 items-center md:items-start"
+        >
+          <div class="md:col-span-1 flex justify-center order-first md:order-2">
+            <div
+              class="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full overflow-hidden shadow-2xl border-2 border-gray-800 transform hover:scale-105 transition-transform duration-300"
+            >
+              <img
+                src="/305_PAMORADA_FRANZ_APC/profile.JPG"
+                alt="Franz Pamorada Profile Picture"
+                class="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+
+          <div
+            class="md:col-span-1 space-y-6 md:space-y-8 text-center md:text-left order-2 md:order-1"
+          >
+            <div>
+              <h3
+                class="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-2 md:mb-3"
+              >
+                Hi there!
+              </h3>
+              <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+                I'm a freelance Fullstack & Embedded Systems Developer, creating
+                innovative digital experiences and bridging the gap between
+                software and hardware.
+              </p>
+            </div>
+            <div>
+              <h3
+                class="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-2 md:mb-3"
+              >
+                SKILLS
+              </h3>
+              <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+                HTML • CSS • Tailwind • JavaScript • Vue.js • PHP • MySQL •
+                Arduino • Embedded Systems
+              </p>
+            </div>
+            <div>
+              <h3
+                class="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-2 md:mb-3"
+              >
+                CONNECT
+              </h3>
+              <div class="flex justify-center md:justify-start space-x-4">
+                <a
+                  href="https://facebook.com/yourprofile"
+                  target="_blank"
+                  class="text-gray-500 hover:text-white transition-colors duration-300 text-xl"
+                  aria-label="Facebook"
+                  ><i class="fab fa-facebook"></i
+                ></a>
+                <a
+                  href="https://linkedin.com/in/yourprofile"
+                  target="_blank"
+                  class="text-gray-500 hover:text-white transition-colors duration-300 text-xl"
+                  aria-label="LinkedIn"
+                  ><i class="fab fa-linkedin"></i
+                ></a>
+                <a
+                  href="https://github.com/yourprofile"
+                  target="_blank"
+                  class="text-gray-500 hover:text-white transition-colors duration-300 text-xl"
+                  aria-label="GitHub"
+                  ><i class="fab fa-github"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="md:col-span-1 space-y-6 md:space-y-8 text-center md:text-right order-3 md:order-3"
+          >
+            <div>
+              <p class="text-5xl sm:text-6xl lg:text-7xl font-bold text-white">
+                8
+              </p>
+              <p
+                class="text-xs font-semibold tracking-widest text-gray-400 uppercase mt-1"
+              >
+                PROJECTS DONE
+              </p>
+            </div>
+            <div>
+              <p class="text-5xl sm:text-6xl lg:text-7xl font-bold text-white">
+                2+
+              </p>
+              <p
+                class="text-xs font-semibold tracking-widest text-gray-400 uppercase mt-1"
+              >
+                YEARS OF EXPERIENCE
+              </p>
+            </div>
+            <div>
+              <p class="text-5xl sm:text-6xl lg:text-7xl font-bold text-white">
+                8
+              </p>
+              <p
+                class="text-xs font-semibold tracking-widest text-gray-400 uppercase mt-1"
+              >
+                HAPPY CLIENTS
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" class="py-16 px-4 bg-black text-white">
+        <div class="container mx-auto px-4">
+          <div class="text-left mb-12">
+            <p
+              class="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-2"
+            >
+              SERVICES
+            </p>
+            <h2 class="text-4xl sm:text-5xl font-bold">
+              What I <span style="color: #8a2be2">Do</span>
+            </h2>
+          </div>
+
+          <div class="space-y-8">
+            <div
+              class="group flex items-start p-6 bg-gray-900 rounded-lg shadow-lg border-b-4 border-[#8A2BE2] hover:shadow-xl hover:bg-[#8A2BE2] transition-all duration-300 ease-in-out"
+            >
+              <div
+                class="text-3xl font-bold mr-6 text-gray-500 group-hover:text-gray-100 transition-colors duration-300"
+              >
+                01/
+              </div>
+              <div
+                class="mr-6 text-3xl text-[#8A2BE2] group-hover:text-white transition-colors duration-300"
+              >
+                <i class="fas fa-code"></i>
+              </div>
+              <div>
+                <h3
+                  class="text-2xl font-semibold mb-2 text-white group-hover:text-white transition-colors duration-300"
+                >
+                  Development
+                </h3>
+                <p
+                  class="text-gray-400 text-sm sm:text-base leading-relaxed group-hover:text-gray-200 transition-colors duration-300"
+                >
+                  Crafting robust and scalable web applications and systems
+                  tailored to your specific needs, from front-end interfaces to
+                  back-end logic.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="group flex items-start p-6 bg-gray-900 rounded-lg shadow-lg border-b-4 border-[#8A2BE2] hover:shadow-xl hover:bg-[#8A2BE2] transition-all duration-300 ease-in-out"
+            >
+              <div
+                class="text-3xl font-bold mr-6 text-gray-500 group-hover:text-gray-100 transition-colors duration-300"
+              >
+                02/
+              </div>
+              <div
+                class="mr-6 text-3xl text-[#8A2BE2] group-hover:text-white transition-colors duration-300"
+              >
+                <i class="fas fa-tools"></i>
+              </div>
+              <div>
+                <h3
+                  class="text-2xl font-semibold mb-2 text-white group-hover:text-white transition-colors duration-300"
+                >
+                  Prototyping
+                </h3>
+                <p
+                  class="text-gray-400 text-sm sm:text-base leading-relaxed group-hover:text-gray-200 transition-colors duration-300"
+                >
+                  Developing functional prototypes for embedded systems and IoT
+                  solutions, enabling early testing and validation of hardware
+                  and software interactions.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="work" class="py-16 px-4 bg-black text-white">
+        <div
+          class="container mx-auto px-6 py-8 md:px-8 md:py-12 bg-gray-900 rounded-lg shadow-xl"
+        >
+          <div class="mb-8 md:mb-12">
+            <p
+              class="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-2"
+            >
+              PORTFOLIO
+            </p>
+            <h2 class="text-4xl sm:text-5xl font-bold mb-2">
+              Recent <span style="color: #8a2be2">Works</span>
+            </h2>
+            <p
+              class="text-gray-400 max-w-2xl text-sm sm:text-base leading-relaxed mb-6"
+            >
+              Here are a few selected projects that showcase my skills in
+              full-stack development and embedded systems.
+            </p>
+            <div class="flex space-x-3">
+              <button
+                id="portfolio-prev-button"
+                class="p-2.5 bg-gray-800 hover:bg-gray-700 rounded-full text-white disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-gray-600"
+              >
+                <i class="fas fa-arrow-left fa-fw"></i>
+              </button>
+              <button
+                id="portfolio-next-button"
+                class="p-2.5 bg-gray-800 hover:bg-gray-700 rounded-full text-white disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-gray-600"
+              >
+                <i class="fas fa-arrow-right fa-fw"></i>
+              </button>
+            </div>
+          </div>
+
+          <div
+            id="portfolio-grid"
+            class="grid grid-cols-1 md:grid-cols-2 gap-8"
+          >
+            <div
+              class="portfolio-project-item bg-gray-800 rounded-lg overflow-hidden shadow-xl group transform hover:scale-105 transition-all duration-300"
+            >
+              <div
+                id="project1-carousel"
+                class="relative"
+                data-carousel="static"
+              >
+                <div class="relative h-80 md:h-96 overflow-hidden rounded-t-lg">
+                  <div
+                    class="hidden duration-700 ease-in-out"
+                    data-carousel-item
+                  >
+                    <img
+                      src="p1.png"
+                      class="absolute block w-full h-full object-contain top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-2"
+                      alt="Bakery ERP - Interface"
+                    />
+                  </div>
+                  <div
+                    class="hidden duration-700 ease-in-out"
+                    data-carousel-item
+                  >
+                    <img
+                      src="p2.png"
+                      class="absolute block w-full h-full object-contain top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-2"
+                      alt="Bakery ERP - Mobile View"
+                    />
+                  </div>
+                  <div
+                    class="hidden duration-700 ease-in-out"
+                    data-carousel-item
+                  >
+                    <img
+                      src="p3.png"
+                      class="absolute block w-full h-full object-contain top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-2"
+                      alt="Bakery ERP - Dashboard"
+                    />
+                  </div>
+                  <div
+                    class="hidden duration-700 ease-in-out"
+                    data-carousel-item
+                  >
+                    <img
+                      src="p4.png"
+                      class="absolute block w-full h-full object-contain top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-2"
+                      alt="Bakery ERP - Dashboard"
+                    />
+                  </div>
+                  <div
+                    class="hidden duration-700 ease-in-out"
+                    data-carousel-item
+                  >
+                    <img
+                      src="p5.png"
+                      class="absolute block w-full h-full object-contain top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-2"
+                      alt="Bakery ERP - Dashboard"
+                    />
+                  </div>
+                  <div
+                    class="hidden duration-700 ease-in-out"
+                    data-carousel-item
+                  >
+                    <img
+                      src="p6.png"
+                      class="absolute block w-full h-full object-contain top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-2"
+                      alt="Bakery ERP - Dashboard"
+                    />
+                  </div>
+                  <div
+                    class="hidden duration-700 ease-in-out"
+                    data-carousel-item
+                  >
+                    <img
+                      src="p7.png"
+                      class="absolute block w-full h-full object-contain top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-2"
+                      alt="Bakery ERP - Dashboard"
+                    />
+                  </div>
+                  <div
+                    class="hidden duration-700 ease-in-out"
+                    data-carousel-item
+                  >
+                    <img
+                      src="p8.png"
+                      class="absolute block w-full h-full object-contain top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-2"
+                      alt="Bakery ERP - Dashboard"
+                    />
+                  </div>
+                  <div
+                    class="hidden duration-700 ease-in-out"
+                    data-carousel-item
+                  >
+                    <img
+                      src="p9.png"
+                      class="absolute block w-full h-full object-contain top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-2"
+                      alt="Bakery ERP - Dashboard"
+                    />
+                  </div>
+                  <div
+                    class="hidden duration-700 ease-in-out"
+                    data-carousel-item
+                  >
+                    <img
+                      src="p10.png"
+                      class="absolute block w-full h-full object-contain top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-2"
+                      alt="Bakery ERP - Dashboard"
+                    />
+                  </div>
+                  <div
+                    class="hidden duration-700 ease-in-out"
+                    data-carousel-item
+                  >
+                    <img
+                      src="p11.png"
+                      class="absolute block w-full h-full object-contain top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-2"
+                      alt="Bakery ERP - Dashboard"
+                    />
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                  data-carousel-prev
+                >
+                  <span
+                    class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 group-focus:ring-4 group-focus:ring-white/70 group-focus:outline-none"
+                  >
+                    <svg
+                      class="w-4 h-4 text-white"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 6 10"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 1 1 5l4 4"
+                      />
+                    </svg>
+                    <span class="sr-only">Previous</span>
+                  </span>
+                </button>
+                <button
+                  type="button"
+                  class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                  data-carousel-next
+                >
+                  <span
+                    class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 group-focus:ring-4 group-focus:ring-white/70 group-focus:outline-none"
+                  >
+                    <svg
+                      class="w-4 h-4 text-white"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 6 10"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="m1 9 4-4-4-4"
+                      />
+                    </svg>
+                    <span class="sr-only">Next</span>
+                  </span>
+                </button>
+              </div>
+              <div class="p-5">
+                <p
+                  class="text-xs font-semibold tracking-wider text-gray-500 uppercase mb-1"
+                >
+                  FULLSTACK DEVELOPMENT
+                </p>
+                <h3 class="text-lg font-semibold text-white leading-tight">
+                  ERP SYSTEM
+                </h3>
+              </div>
+            </div>
+
+            <div
+              class="portfolio-project-item bg-gray-800 rounded-lg overflow-hidden shadow-xl group transform hover:scale-105 transition-all duration-300"
+            >
+              <div
+                id="project2-carousel"
+                class="relative"
+                data-carousel="static"
+              >
+                <div class="relative h-80 md:h-96 overflow-hidden rounded-t-lg">
+                  <div
+                    class="hidden duration-700 ease-in-out"
+                    data-carousel-item
+                  >
+                    <img
+                      src="q3.gif"
+                      class="absolute block w-full h-full object-contain top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-2"
+                      alt="Leg Therapy GIF 1"
+                    />
+                  </div>
+                  <div
+                    class="hidden duration-700 ease-in-out"
+                    data-carousel-item
+                  >
+                    <img
+                      src="q4.gif"
+                      class="absolute block w-full h-full object-contain top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-2"
+                      alt="Leg Therapy GIF 2"
+                    />
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                  data-carousel-prev
+                >
+                  <span
+                    class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 group-focus:ring-4 group-focus:ring-white/70 group-focus:outline-none"
+                  >
+                    <svg
+                      class="w-4 h-4 text-white"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 6 10"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 1 1 5l4 4"
+                      /></svg
+                    ><span class="sr-only">Previous</span></span
+                  >
+                </button>
+                <button
+                  type="button"
+                  class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                  data-carousel-next
+                >
+                  <span
+                    class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 group-focus:ring-4 group-focus:ring-white/70 group-focus:outline-none"
+                  >
+                    <svg
+                      class="w-4 h-4 text-white"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 6 10"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="m1 9 4-4-4-4"
+                      /></svg
+                    ><span class="sr-only">Next</span></span
+                  >
+                </button>
+              </div>
+              <div class="p-5">
+                <p
+                  class="text-xs font-semibold tracking-wider text-gray-500 uppercase mb-1"
+                >
+                  EMBEDDED SYSTEMS - ARDUINO
+                </p>
+                <h3 class="text-lg font-semibold text-white leading-tight">
+                  Leg Therapy Prototype
+                </h3>
+              </div>
+            </div>
+
+            <div
+              class="portfolio-project-item bg-gray-800 rounded-lg overflow-hidden shadow-xl group transform hover:scale-105 transition-all duration-300"
+            >
+              <div
+                id="project3-carousel"
+                class="relative"
+                data-carousel="static"
+              >
+                <div class="relative h-80 md:h-96 overflow-hidden rounded-t-lg">
+                  <div
+                    class="hidden duration-700 ease-in-out"
+                    data-carousel-item
+                  >
+                    <img
+                      src="q2.png"
+                      class="absolute block w-full h-full object-contain top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-2"
+                      alt="Sprayer Image 2"
+                    />
+                  </div>
+                  <div
+                    class="hidden duration-700 ease-in-out"
+                    data-carousel-item
+                  >
+                    <img
+                      src="r3.gif"
+                      class="absolute block w-full h-full object-contain top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-2"
+                      alt="Sprayer GIF"
+                    />
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                  data-carousel-prev
+                >
+                  <span
+                    class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 group-focus:ring-4 group-focus:ring-white/70 group-focus:outline-none"
+                  >
+                    <svg
+                      class="w-4 h-4 text-white"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 6 10"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 1 1 5l4 4"
+                      /></svg
+                    ><span class="sr-only">Previous</span></span
+                  >
+                </button>
+                <button
+                  type="button"
+                  class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                  data-carousel-next
+                >
+                  <span
+                    class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 group-focus:ring-4 group-focus:ring-white/70 group-focus:outline-none"
+                  >
+                    <svg
+                      class="w-4 h-4 text-white"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 6 10"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="m1 9 4-4-4-4"
+                      /></svg
+                    ><span class="sr-only">Next</span></span
+                  >
+                </button>
+              </div>
+              <div class="p-5">
+                <p
+                  class="text-xs font-semibold tracking-wider text-gray-500 uppercase mb-1"
+                >
+                  EMBEDDED SYSTEMS - ARDUINO
+                </p>
+                <h3 class="text-lg font-semibold text-white leading-tight">
+                  A Remote Controlled Insecticide Sprayer
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="contact" class="bg-black text-gray-300 py-16 sm:py-24 px-4">
+        <div class="container mx-auto">
+          <div class="flex flex-col md:flex-row md:space-x-12 lg:space-x-20">
+            <div
+              class="md:w-2/5 lg:w-1/3 mb-12 md:mb-0 text-center md:text-left"
+            >
+              <p
+                class="text-sm font-semibold tracking-widest text-gray-400 uppercase mb-3"
+              >
+                CONTACT
+              </p>
+              <h2
+                class="text-5xl sm:text-6xl font-bold text-white leading-tight"
+              >
+                Let's <span style="color: #8a2be2">Connect</span>
+              </h2>
+            </div>
+
+            <div class="md:w-3/5 lg:w-2/3">
+              <div
+                class="flex flex-col sm:flex-row sm:items-center sm:space-x-10 mb-10"
+              >
+                <div class="mb-6 sm:mb-0">
+                  <p
+                    class="text-xs font-semibold tracking-widest text-gray-500 uppercase mb-1"
+                  >
+                    EMAIL:
+                  </p>
+                  <a
+                    href="mailto:contact@flatheme.net"
+                    class="text-lg text-gray-100 hover:text-[#8A2BE2] transition-colors duration-300 font-medium"
+                    >fopamorada@gmail.com</a
+                  >
+                </div>
+                <div>
+                  <p
+                    class="text-xs font-semibold tracking-widest text-gray-500 uppercase mb-1"
+                  >
+                    CALL:
+                  </p>
+                  <p class="text-lg text-gray-100 font-medium">
+                    +63 998 256 2846
+                  </p>
+                </div>
+              </div>
+
+              <form
+                action="https://usebasin.com/f/f3ccf050641c"
+                method="POST"
+                class="space-y-5"
+              >
+                <div class="flex flex-col sm:flex-row sm:space-x-5">
+                  <div class="sm:w-1/2">
+                    <label for="name" class="sr-only">Name</label>
+                    <input
+                      type="text"
+                      name="name"
+                      id="name"
+                      placeholder="Name"
+                      required
+                      class="w-full bg-[#1C1C1C] border border-transparent text-gray-300 placeholder-gray-500 rounded-lg p-3.5 focus:ring-1 focus:ring-[#8A2BE2] focus:border-transparent transition-all duration-300"
+                    />
+                  </div>
+                  <div class="sm:w-1/2 mt-5 sm:mt-0">
+                    <label for="email" class="sr-only">E-Mail</label>
+                    <input
+                      type="email"
+                      name="email"
+                      id="email"
+                      placeholder="E-Mail"
+                      required
+                      class="w-full bg-[#1C1C1C] border border-transparent text-gray-300 placeholder-gray-500 rounded-lg p-3.5 focus:ring-1 focus:ring-[#8A2BE2] focus:border-transparent transition-all duration-300"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label for="subject" class="sr-only">Subject</label>
+                  <input
+                    type="text"
+                    name="subject"
+                    id="subject"
+                    placeholder="Subject"
+                    class="w-full bg-[#1C1C1C] border border-transparent text-gray-300 placeholder-gray-500 rounded-lg p-3.5 focus:ring-1 focus:ring-[#8A2BE2] focus:border-transparent transition-all duration-300"
+                  />
+                </div>
+                <div>
+                  <label for="message" class="sr-only">Message</label>
+                  <textarea
+                    name="message"
+                    id="message"
+                    rows="5"
+                    placeholder="Message"
+                    required
+                    class="w-full bg-[#1C1C1C] border border-transparent text-gray-300 placeholder-gray-500 rounded-lg p-3.5 focus:ring-1 focus:ring-[#8A2BE2] focus:border-transparent transition-all duration-300"
+                  ></textarea>
+                </div>
+                <div class="text-right pt-2">
+                  <button
+                    class="text-black rounded-lg relative h-[50px] w-100 px-7 py-3 font-semibold overflow-hidden border border-gray-500 bg-white px-3 text-black shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-[#8a2be2] before:transition-all before:duration-500 hover:text-white hover:before:left-0 hover:before:w-full"
+                  >
+                    <span class="relative z-10"
+                      >Send Message
+                      <i class="fas fa-arrow-right ml-2 text-xs"></i
+                    ></span>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-black text-gray-400 py-8 px-4">
+      <div class="container mx-auto text-center">
+        <p>© 2025 Franz Pamorada. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+
+    <script>
+      // Basic JavaScript for mobile menu toggle
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+        });
+      }
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetElement = document.querySelector(
+            this.getAttribute("href")
+          );
+          if (targetElement) {
+            targetElement.scrollIntoView({
+              behavior: "smooth",
+            });
+          }
+
+          // Close mobile menu after clicking a link
+          if (mobileMenu && !mobileMenu.classList.contains("hidden")) {
+            mobileMenu.classList.add("hidden");
+          }
+        });
+      });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const portfolioGrid = document.getElementById("portfolio-grid");
+        if (!portfolioGrid) {
+          return;
+        }
+
+        const projectItems = Array.from(
+          portfolioGrid.getElementsByClassName("portfolio-project-item")
+        );
+        const prevButton = document.getElementById("portfolio-prev-button");
+        const nextButton = document.getElementById("portfolio-next-button");
+
+        if (!prevButton || !nextButton || projectItems.length === 0) {
+          if (prevButton) prevButton.style.display = "none";
+          if (nextButton) nextButton.style.display = "none";
+          return;
+        }
+
+        const itemsPerPage = 2;
+        let currentPage = 0;
+        const totalPages = Math.ceil(projectItems.length / itemsPerPage);
+
+        function updateProjectDisplay() {
+          projectItems.forEach((item, index) => {
+            const itemPage = Math.floor(index / itemsPerPage);
+            if (itemPage === currentPage) {
+              item.classList.remove("hidden");
+            } else {
+              item.classList.add("hidden");
+            }
+          });
+
+          prevButton.disabled = currentPage === 0;
+          prevButton.classList.toggle("opacity-50", prevButton.disabled);
+          prevButton.classList.toggle(
+            "cursor-not-allowed",
+            prevButton.disabled
+          );
+
+          nextButton.disabled = currentPage >= totalPages - 1;
+          nextButton.classList.toggle("opacity-50", nextButton.disabled);
+          nextButton.classList.toggle(
+            "cursor-not-allowed",
+            nextButton.disabled
+          );
+
+          if (totalPages <= 1) {
+            prevButton.disabled = true;
+            nextButton.disabled = true;
+            prevButton.classList.add("opacity-50", "cursor-not-allowed");
+            nextButton.classList.add("opacity-50", "cursor-not-allowed");
+          }
+        }
+
+        nextButton.addEventListener("click", () => {
+          if (currentPage < totalPages - 1) {
+            currentPage++;
+            updateProjectDisplay();
+          }
+        });
+
+        prevButton.addEventListener("click", () => {
+          if (currentPage > 0) {
+            currentPage--;
+            updateProjectDisplay();
+          }
+        });
+        updateProjectDisplay();
+      });
+    </script>
+  </body>
+</html>
