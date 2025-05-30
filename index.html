@@ -165,7 +165,16 @@
         text-stroke-width: 2px;
         text-stroke-color: #8a2be2;
       }
+      .award-card {
+        /* Increased duration and a different cubic-bezier for a smoother transition */
+        transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1),
+          box-shadow 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+      }
 
+      .award-card:hover {
+        transform: translateY(-5px) scale(1.02); /* Slightly lift and scale the card */
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Enhance shadow on hover */
+      }
       /* Custom style for the purple accent line if border doesn't suffice */
       .award-card::after {
         content: "";
