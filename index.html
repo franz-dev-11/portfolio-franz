@@ -179,6 +179,100 @@
         border-bottom-left-radius: 0.5rem; /* Match card's border-radius */
         border-bottom-right-radius: 0.5rem; /* Match card's border-radius */
       }
+      .carousel-track {
+        /* Apply the animation */
+        animation: scrollLogos linear infinite;
+        /* Default animation duration */
+        animation-duration: 40s;
+      }
+
+      /* Keyframes for the scrolling animation */
+      @keyframes scrollLogos {
+        0% {
+          transform: translateX(0%);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* Pause animation on hover for user interaction */
+      .carousel-container:hover .carousel-track {
+        animation-play-state: paused;
+      }
+
+      /* Responsive animation speed adjustments */
+      @media (min-width: 768px) {
+        /* Medium screens and up */
+        .carousel-track {
+          animation-duration: 40s; /* Slower on larger screens */
+        }
+      }
+
+      @media (max-width: 767px) {
+        /* Small screens */
+        .carousel-track {
+          animation-duration: 25s; /* Faster on smaller screens */
+        }
+      }
+
+      /* Basic styling for the section and container for better visual appeal */
+      .logo-carousel-section {
+        background-color: black; /* Light gray background */
+        padding: 3rem 0; /* Vertical padding */
+        border-radius: 0.75rem; /* Rounded corners for the section */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+      }
+
+      .carousel-container {
+        border-radius: 0.75rem; /* Rounded corners for the carousel area */
+        background-color: black; /* White background for the carousel */
+        /* IMPORTANT: Increased padding-bottom to prevent label cutoff */
+        padding: 1rem; /* Inner padding */
+        padding-bottom: 3.5rem; /* Increased padding at the bottom for the label */
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06); /* Inner shadow */
+      }
+
+      .logo-item {
+        /* Make logo-item relative for absolute positioning of the label */
+        position: relative;
+        border-radius: 0.5rem; /* Slightly rounded corners for logo items */
+        transition: transform 0.3s ease-in-out; /* Smooth transition for hover effect */
+        /* Add some padding-bottom to the logo-item itself to push the image up slightly,
+               making space for the label if it were to appear without absolute positioning.
+               This also helps with visual balance. */
+        padding-bottom: 1.5rem; /* Added space for the label within the item's box */
+      }
+
+      .logo-item:hover {
+        transform: scale(1.05); /* Slightly enlarge logo on hover */
+      }
+
+      /* Styling for the skill label */
+      .skill-label {
+        position: absolute;
+        /* Adjusted bottom position to be relative to the logo-item's new padding */
+        bottom: 0.5rem; /* Adjusted to sit within the added padding-bottom of logo-item */
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: gray;
+        color: white;
+        padding: 0.3rem 0.6rem;
+        border-radius: 0.375rem; /* Rounded corners for the label */
+        font-size: 0.875rem; /* Smaller font size */
+        white-space: nowrap; /* Prevent label text from wrapping */
+        opacity: 0; /* Initially hidden */
+        pointer-events: none; /* Allows clicks to pass through when hidden */
+        transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Smooth transition for appearance */
+        z-index: 10; /* Ensure label appears above other elements */
+      }
+
+      /* Show label on hover over the logo item */
+      .logo-item:hover .skill-label {
+        opacity: 1;
+        /* Adjusted translateY to lift it slightly from its new bottom position */
+        transform: translateX(-50%) translateY(-0.25rem); /* Slight upward lift on hover */
+      }
     </style>
   </head>
   <body class="bg-black text-gray-300">
@@ -218,6 +312,13 @@
             <span
               class="absolute -bottom-0.5 left-1/2 w-0 h-[2px] bg-[#8a2be2] group-hover:w-full group-hover:left-0 transform group-hover:-translate-x-0 -translate-x-1/2 transition-all duration-300 ease-in-out"
             ></span>
+          </a>
+          <a href="resume.pdf" target="_blank">
+            <button
+              class="text-black rounded-xl relative h-[50px] w-100 px-7 py-3 font-semibold overflow-hidden border border-black bg-white px-3 text-black shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-[#8a2be2] before:transition-all before:duration-500 hover:text-white hover:before:left-0 hover:before:w-full"
+            >
+              <span class="relative z-10">See My Resume</span>
+            </button>
           </a>
         </nav>
 
@@ -261,6 +362,9 @@
           class="block py-2 text-white font-black hover-golden-text transition duration-300"
           >Contact</a
         >
+        <a href="resume.pdf" target="_blank" class="font-black block py-2">
+          <span class="relative z-10">See My Resume</span>
+        </a>
       </nav>
     </header>
 
@@ -306,7 +410,7 @@
                 software and hardware.
               </p>
             </div>
-            <div>
+            <!-- <div>
               <h3
                 class="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-2 md:mb-3"
               >
@@ -316,7 +420,7 @@
                 HTML • CSS • Tailwind • JavaScript • Vue.js • PHP • MySQL •
                 Arduino • Embedded Systems
               </p>
-            </div>
+            </div> -->
             <div>
               <h3
                 class="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-2 md:mb-3"
@@ -345,16 +449,6 @@
                   aria-label="GitHub"
                   ><i class="fab fa-github"></i
                 ></a>
-              </div>
-
-              <div class="mt-8">
-                <a href="resume.pdf" target="_blank">
-                  <button
-                    class="text-black rounded-full relative h-[50px] w-100 px-7 py-3 font-semibold overflow-hidden border border-black bg-white px-3 text-black shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-[#8a2be2] before:transition-all before:duration-500 hover:text-white hover:before:left-0 hover:before:w-full"
-                  >
-                    <span class="relative z-10">See Resume</span>
-                  </button>
-                </a>
               </div>
             </div>
           </div>
@@ -396,15 +490,219 @@
         </div>
       </section>
 
+      <section
+        class="logo-carousel-section w-full max-w-6xl mx-auto p-4 md:p-8 rounded-lg"
+      >
+        <div class="container mx-auto py-12">
+          <p
+            class="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-2 text-center"
+          >
+            EXPERTISE
+          </p>
+          <h2 class="text-4xl sm:text-5xl font-bold text-center">
+            My <span style="color: #8a2be2">Skills</span>
+          </h2>
+          <div
+            class="carousel-container relative overflow-hidden w-full p-4 rounded-xl shadow-lg"
+          >
+            <!--
+                    The carousel-track contains all logo items.
+                    It uses flexbox to arrange items horizontally.
+                    The 'whitespace-nowrap' ensures items don't wrap to the next line.
+                    The 'min-w-max' allows the track to be wider than its parent,
+                    which is essential for the horizontal scrolling animation.
+                -->
+            <div
+              class="carousel-track flex items-center justify-around whitespace-nowrap min-w-max"
+            >
+              <div
+                class="group logo-item flex-shrink-0 w-32 h-32 flex flex-col items-center justify-center p-4 m-2 bg-black rounded-lg shadow-sm"
+              >
+                <img
+                  src="https://www.w3.org/html/logo/badge/html5-badge-h-css3-semantics.png"
+                  onerror="this.onerror=null;this.src='https://placehold.co/128x128/eeeeee/333333?text=HTML'"
+                  alt="HTML Logo"
+                  class="max-w-full max-h-full object-contain"
+                />
+                <span class="skill-label">HTML</span>
+              </div>
+              <div
+                class="group logo-item flex-shrink-0 w-32 h-32 flex flex-col items-center justify-center p-4 m-2 bg-black rounded-lg shadow-sm"
+              >
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg"
+                  onerror="this.onerror=null;this.src='https://placehold.co/128x128/eeeeee/333333?text=CSS'"
+                  alt="CSS Logo"
+                  class="max-w-full max-h-full object-contain"
+                />
+                <span class="skill-label">CSS</span>
+              </div>
+              <div
+                class="group logo-item flex-shrink-0 w-32 h-32 flex flex-col items-center justify-center p-4 m-2 bg-black rounded-lg shadow-sm"
+              >
+                <img
+                  src="https://img.icons8.com/?size=100&id=4PiNHtUJVbLs&format=png&color=000000"
+                  onerror="this.onerror=null;this.src='https://placehold.co/128x128/eeeeee/333333?text=Tailwind'"
+                  alt="Tailwind CSS Logo"
+                  class="max-w-full max-h-full object-contain"
+                />
+                <span class="skill-label">Tailwind CSS</span>
+              </div>
+              <div
+                class="group logo-item flex-shrink-0 w-32 h-32 flex flex-col items-center justify-center p-4 m-2 bg-black rounded-lg shadow-sm"
+              >
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg"
+                  onerror="this.onerror=null;this.src='https://placehold.co/128x128/eeeeee/333333?text=JS'"
+                  alt="JavaScript Logo"
+                  class="max-w-full max-h-full object-contain"
+                />
+                <span class="skill-label">JavaScript</span>
+              </div>
+              <div
+                class="group logo-item flex-shrink-0 w-32 h-32 flex flex-col items-center justify-center p-4 m-2 bg-black rounded-lg shadow-sm"
+              >
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg"
+                  onerror="this.onerror=null;this.src='https://placehold.co/128x128/eeeeee/333333?text=Vue.js'"
+                  alt="Vue.js Logo"
+                  class="max-w-full max-h-full object-contain"
+                />
+                <span class="skill-label">Vue.js</span>
+              </div>
+              <div
+                class="group logo-item flex-shrink-0 w-32 h-32 flex flex-col items-center justify-center p-4 m-2 bg-black rounded-lg shadow-sm"
+              >
+                <img
+                  src="https://img.icons8.com/?size=100&id=JybIpZjjXT0F&format=png&color=000000"
+                  onerror="this.onerror=null;this.src='https://placehold.co/128x128/eeeeee/333333?text=PHP'"
+                  alt="PHP Logo"
+                  class="max-w-full max-h-full object-contain"
+                />
+                <span class="skill-label">PHP</span>
+              </div>
+              <div
+                class="group logo-item flex-shrink-0 w-32 h-32 flex flex-col items-center justify-center p-4 m-2 bg-black rounded-lg shadow-sm"
+              >
+                <img
+                  src="https://img.icons8.com/?size=100&id=UFXRpPFebwa2&format=png&color=000000"
+                  onerror="this.onerror=null;this.src='https://placehold.co/128x128/eeeeee/333333?text=MySQL'"
+                  alt="MySQL Logo"
+                  class="max-w-full max-h-full object-contain"
+                />
+                <span class="skill-label">MySQL</span>
+              </div>
+              <div
+                class="group logo-item flex-shrink-0 w-32 h-32 flex flex-col items-center justify-center p-4 m-2 bg-black rounded-lg shadow-sm"
+              >
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/8/87/Arduino_Logo.svg"
+                  onerror="this.onerror=null;this.src='https://placehold.co/128x128/eeeeee/333333?text=Arduino'"
+                  alt="Arduino Logo"
+                  class="max-w-full max-h-full object-contain"
+                />
+                <span class="skill-label">Arduino</span>
+              </div>
+
+              <!--
+                        Duplicate logos for seamless looping.
+                        It's crucial to duplicate enough logos to fill the visible area
+                        and ensure a smooth transition when the animation loops.
+                        The number of duplicates here (3) is an example;
+                        you might need more or fewer depending on the visible width
+                        and the number of unique logos.
+                    -->
+              <div
+                class="group logo-item flex-shrink-0 w-32 h-32 flex flex-col items-center justify-center p-4 m-2 bg-black rounded-lg shadow-sm"
+              >
+                <img
+                  src="https://www.w3.org/html/logo/badge/html5-badge-h-css3-semantics.png"
+                  onerror="this.onerror=null;this.src='https://placehold.co/128x128/eeeeee/333333?text=HTML'"
+                  alt="HTML Logo"
+                  class="max-w-full max-h-full object-contain"
+                />
+                <span class="skill-label">HTML</span>
+              </div>
+              <div
+                class="group logo-item flex-shrink-0 w-32 h-32 flex flex-col items-center justify-center p-4 m-2 bg-black rounded-lg shadow-sm"
+              >
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg"
+                  onerror="this.onerror=null;this.src='https://placehold.co/128x128/eeeeee/333333?text=CSS'"
+                  alt="CSS Logo"
+                  class="max-w-full max-h-full object-contain"
+                />
+                <span class="skill-label">CSS</span>
+              </div>
+              <div
+                class="group logo-item flex-shrink-0 w-32 h-32 flex flex-col items-center justify-center p-4 m-2 bg-black rounded-lg shadow-sm"
+              >
+                <img
+                  src="https://img.icons8.com/?size=100&id=4PiNHtUJVbLs&format=png&color=000000"
+                  onerror="this.onerror=null;this.src='https://placehold.co/128x128/eeeeee/333333?text=Tailwind'"
+                  alt="Tailwind CSS Logo"
+                  class="max-w-full max-h-full object-contain"
+                />
+                <span class="skill-label">Tailwind CSS</span>
+              </div>
+              <div
+                class="group logo-item flex-shrink-0 w-32 h-32 flex flex-col items-center justify-center p-4 m-2 bg-black rounded-lg shadow-sm"
+              >
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg"
+                  onerror="this.onerror=null;this.src='https://placehold.co/128x128/eeeeee/333333?text=JS'"
+                  alt="JavaScript Logo"
+                  class="max-w-full max-h-full object-contain"
+                />
+                <span class="skill-label">JavaScript</span>
+              </div>
+              <div
+                class="group logo-item flex-shrink-0 w-32 h-32 flex flex-col items-center justify-center p-4 m-2 bg-black rounded-lg shadow-sm"
+              >
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg"
+                  onerror="this.onerror=null;this.src='https://placehold.co/128x128/eeeeee/333333?text=Vue.js'"
+                  alt="Vue.js Logo"
+                  class="max-w-full max-h-full object-contain"
+                />
+                <span class="skill-label">Vue.js</span>
+              </div>
+              <div
+                class="group logo-item flex-shrink-0 w-32 h-32 flex flex-col items-center justify-center p-4 m-2 bg-black rounded-lg shadow-sm"
+              >
+                <img
+                  src="https://img.icons8.com/?size=100&id=JybIpZjjXT0F&format=png&color=000000"
+                  onerror="this.onerror=null;this.src='https://placehold.co/128x128/eeeeee/333333?text=PHP'"
+                  alt="PHP Logo"
+                  class="max-w-full max-h-full object-contain"
+                />
+                <span class="skill-label">PHP</span>
+              </div>
+              <div
+                class="group logo-item flex-shrink-0 w-32 h-32 flex flex-col items-center justify-center p-4 m-2 bg-black rounded-lg shadow-sm"
+              >
+                <img
+                  src="https://img.icons8.com/?size=100&id=UFXRpPFebwa2&format=png&color=000000"
+                  onerror="this.onerror=null;this.src='https://placehold.co/128x128/eeeeee/333333?text=MySQL'"
+                  alt="MySQL Logo"
+                  class="max-w-full max-h-full object-contain"
+                />
+                <span class="skill-label">MySQL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="services" class="py-16 px-4 bg-black text-white">
         <div class="container mx-auto px-4">
           <div class="text-left mb-12">
             <p
-              class="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-2"
+              class="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-2 text-center"
             >
               SERVICES
             </p>
-            <h2 class="text-4xl sm:text-5xl font-bold">
+            <h2 class="text-4xl sm:text-5xl font-bold text-center">
               What I <span style="color: #8a2be2">Do</span>
             </h2>
           </div>
@@ -1320,6 +1618,55 @@
           }
         });
         updateProjectDisplay();
+      });
+      // Get a reference to the carousel track element
+      const carouselTrack = document.querySelector(".carousel-track");
+      // Store the original animation property
+      const originalAnimation =
+        window.getComputedStyle(carouselTrack).animation;
+
+      // Debounce function to limit how often resize events trigger a function
+      let resizeTimer;
+      window.addEventListener("resize", () => {
+        // Clear any existing timer
+        clearTimeout(resizeTimer);
+        // Set a new timer to execute the restart function after a delay (e.g., 250ms)
+        resizeTimer = setTimeout(() => {
+          restartAnimation();
+        }, 250);
+      });
+
+      /**
+       * Restarts the CSS animation on the carousel track.
+       * This is a common workaround for browser-induced animation pauses during resize.
+       */
+      function restartAnimation() {
+        console.log("Restarting carousel animation...");
+        // Temporarily remove the animation to reset it
+        carouselTrack.style.animation = "none";
+
+        // Force a reflow/repaint to ensure the browser registers the change
+        // Accessing offsetHeight is a simple way to force reflow
+        void carouselTrack.offsetHeight;
+
+        // Re-apply the original animation
+        carouselTrack.style.animation = originalAnimation;
+        console.log("Carousel animation restarted.");
+      }
+
+      // Add a fallback for image loading errors
+      document.querySelectorAll(".logo-item img").forEach((img) => {
+        img.onerror = function () {
+          // Set a placeholder image if the original fails to load
+          // Use the alt text as the placeholder text if available, otherwise a generic "Logo Error"
+          const placeholderText = this.alt
+            ? this.alt.replace(" Logo", "")
+            : "Logo Error";
+          this.src = `https://placehold.co/${this.width || 128}x${
+            this.height || 128
+          }/eeeeee/333333?text=${encodeURIComponent(placeholderText)}`;
+          this.alt = "Image failed to load";
+        };
       });
     </script>
   </body>
