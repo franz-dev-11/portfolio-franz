@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
+    <title>My Portfolio</title>
     <link
       rel="icon"
       href="logo-title.png"
@@ -23,8 +23,8 @@
     />
     <style>
       /* It's good practice to move as much of this custom CSS into Tailwind
-         if possible, or keep it minimal. For styles that are hard to
-         replicate with utility classes, keeping them here is fine. */
+               if possible, or keep it minimal. For styles that are hard to
+               replicate with utility classes, keeping them here is fine. */
       body {
         font-family: "Inter", sans-serif;
         line-height: 1.6;
@@ -78,8 +78,8 @@
       }
 
       /* Flowbite specific styles should ideally be handled by Flowbite's JS
-         interacting with Tailwind classes. If these are overrides, ensure they
-         are necessary after setting up Tailwind properly. */
+               interacting with Tailwind classes. If these are overrides, ensure they
+               are necessary after setting up Tailwind properly. */
       .flowbite-carousel-wrapper .relative {
         width: 80vw;
         height: 200px;
@@ -165,16 +165,6 @@
         text-stroke-width: 2px;
         text-stroke-color: #8a2be2;
       }
-      .award-card {
-        /* Increased duration and a different cubic-bezier for a smoother transition */
-        transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1),
-          box-shadow 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-      }
-
-      .award-card:hover {
-        transform: translateY(-5px) scale(1.02); /* Slightly lift and scale the card */
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Enhance shadow on hover */
-      }
       /* Custom style for the purple accent line if border doesn't suffice */
       .award-card::after {
         content: "";
@@ -248,8 +238,8 @@
         border-radius: 0.5rem; /* Slightly rounded corners for logo items */
         transition: transform 0.3s ease-in-out; /* Smooth transition for hover effect */
         /* Add some padding-bottom to the logo-item itself to push the image up slightly,
-               making space for the label if it were to appear without absolute positioning.
-               This also helps with visual balance. */
+                     making space for the label if it were to appear without absolute positioning.
+                     This also helps with visual balance. */
         padding-bottom: 1.5rem; /* Added space for the label within the item's box */
       }
 
@@ -290,7 +280,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: black; /* Dark background matching loader */
+        background-color: #1a1a2e; /* Dark background matching loader */
         display: flex;
         justify-content: center;
         align-items: center;
@@ -308,12 +298,13 @@
       #main-content {
         opacity: 0;
         transition: opacity 0.7s ease-in; /* Fade in effect */
-        display: none; /* Hide it completely from layout initially */
+        /* Removed display: none here to allow opacity transition */
         pointer-events: none; /* Disable interaction when hidden */
       }
 
       #main-content.visible {
         opacity: 1;
+        pointer-events: auto; /* Enable interaction when visible */
       }
 
       /* Loader specific styles from previous step */
@@ -588,6 +579,15 @@
               ></span>
             </a>
             <a
+              href="#awards"
+              class="text-white font-black hover-golden-text transition duration-300 relative group py-2 text-lg"
+            >
+              Awards
+              <span
+                class="absolute -bottom-0.5 left-1/2 w-0 h-[2px] bg-[#8a2be2] group-hover:w-full group-hover:left-0 transform group-hover:-translate-x-0 -translate-x-1/2 transition-all duration-300 ease-in-out"
+              ></span>
+            </a>
+            <a
               href="#contact"
               class="text-white font-black hover-golden-text transition duration-300 relative group py-2 text-lg"
             >
@@ -695,17 +695,6 @@
                   between software and hardware.
                 </p>
               </div>
-              <!-- <div>
-                <h3
-                  class="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-2 md:mb-3"
-                >
-                  SKILLS
-                </h3>
-                <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
-                  HTML • CSS • Tailwind • JavaScript • Vue.js • PHP • MySQL •
-                  Arduino • Embedded Systems
-                </p>
-              </div> -->
               <div>
                 <h3
                   class="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-2 md:mb-3"
@@ -796,13 +785,6 @@
             <div
               class="carousel-container relative overflow-hidden w-full p-4 rounded-xl shadow-lg"
             >
-              <!--
-                      The carousel-track contains all logo items.
-                      It uses flexbox to arrange items horizontally.
-                      The 'whitespace-nowrap' ensures items don't wrap to the next line.
-                      The 'min-w-max' allows the track to be wider than its parent,
-                      which is essential for the horizontal scrolling animation.
-                  -->
               <div
                 class="carousel-track flex items-center justify-around whitespace-nowrap min-w-max"
               >
@@ -895,14 +877,6 @@
                   <span class="skill-label">Arduino</span>
                 </div>
 
-                <!--
-                          Duplicate logos for seamless looping.
-                          It's crucial to duplicate enough logos to fill the visible area
-                          and ensure a smooth transition when the animation loops.
-                          The number of duplicates here (3) is an example;
-                          you might need more or fewer depending on the visible width
-                          and the number of unique logos.
-                      -->
                 <div
                   class="group logo-item flex-shrink-0 w-32 h-32 flex flex-col items-center justify-center p-4 m-2 bg-black rounded-lg shadow-sm"
                 >
@@ -1066,7 +1040,7 @@
           >
             <div class="mb-8 md:mb-12">
               <p
-                class="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-2"
+                class="text-xs font-semibold tracking-wider text-gray-400 uppercase mb-2"
               >
                 PORTFOLIO
               </p>
@@ -1230,21 +1204,9 @@
                     <span
                       class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800/60 hover:bg-gray-700/80 group-focus:ring-4 group-focus:ring-[#8a2be2]/50 group-focus:outline-none"
                     >
-                      <svg
-                        class="w-4 h-4 text-white"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 6 10"
-                      >
-                        <path
-                          stroke="currentColor"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M5 1 1 5l4 4"
-                        />
-                      </svg>
+                      <i
+                        class="fas fa-arrow-circle-left text-white text-xl"
+                      ></i>
                       <span class="sr-only">Previous</span>
                     </span>
                   </button>
@@ -1256,21 +1218,9 @@
                     <span
                       class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800/60 hover:bg-gray-700/80 group-focus:ring-4 group-focus:ring-[#8a2be2]/50 group-focus:outline-none"
                     >
-                      <svg
-                        class="w-4 h-4 text-white"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 6 10"
-                      >
-                        <path
-                          stroke="currentColor"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="m1 9 4-4-4-4"
-                        />
-                      </svg>
+                      <i
+                        class="fas fa-arrow-circle-right text-white text-xl"
+                      ></i>
                       <span class="sr-only">Next</span>
                     </span>
                   </button>
@@ -1378,21 +1328,9 @@
                     <span
                       class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800/60 hover:bg-gray-700/80 group-focus:ring-4 group-focus:ring-[#8a2be2]/50 group-focus:outline-none"
                     >
-                      <svg
-                        class="w-4 h-4 text-white"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 6 10"
-                      >
-                        <path
-                          stroke="currentColor"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M5 1 1 5l4 4"
-                        />
-                      </svg>
+                      <i
+                        class="fas fa-arrow-circle-left text-white text-xl"
+                      ></i>
                       <span class="sr-only">Previous</span>
                     </span>
                   </button>
@@ -1404,21 +1342,9 @@
                     <span
                       class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800/60 hover:bg-gray-700/80 group-focus:ring-4 group-focus:ring-[#8a2be2]/50 group-focus:outline-none"
                     >
-                      <svg
-                        class="w-4 h-4 text-white"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 6 10"
-                      >
-                        <path
-                          stroke="currentColor"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="m1 9 4-4-4-4"
-                        />
-                      </svg>
+                      <i
+                        class="fas fa-arrow-circle-right text-white text-xl"
+                      ></i>
                       <span class="sr-only">Next</span>
                     </span>
                   </button>
@@ -1475,22 +1401,11 @@
                     <span
                       class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800/60 hover:bg-gray-700/80 group-focus:ring-4 group-focus:ring-[#8a2be2]/50 group-focus:outline-none"
                     >
-                      <svg
-                        class="w-4 h-4 text-white"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 6 10"
-                      >
-                        <path
-                          stroke="currentColor"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M5 1 1 5l4 4"
-                        /></svg
-                      ><span class="sr-only">Previous</span></span
-                    >
+                      <i
+                        class="fas fa-arrow-circle-left text-white text-xl"
+                      ></i>
+                      <span class="sr-only">Previous</span>
+                    </span>
                   </button>
                   <button
                     type="button"
@@ -1500,22 +1415,11 @@
                     <span
                       class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800/60 hover:bg-gray-700/80 group-focus:ring-4 group-focus:ring-[#8a2be2]/50 group-focus:outline-none"
                     >
-                      <svg
-                        class="w-4 h-4 text-white"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 6 10"
-                      >
-                        <path
-                          stroke="currentColor"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="m1 9 4-4-4-4"
-                        /></svg
-                      ><span class="sr-only">Next</span></span
-                    >
+                      <i
+                        class="fas fa-arrow-circle-right text-white text-xl"
+                      ></i>
+                      <span class="sr-only">Next</span>
+                    </span>
                   </button>
                 </div>
                 <div class="p-5">
@@ -1571,22 +1475,11 @@
                     <span
                       class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800/60 hover:bg-gray-700/80 group-focus:ring-4 group-focus:ring-[#8a2be2]/50 group-focus:outline-none"
                     >
-                      <svg
-                        class="w-4 h-4 text-white"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 6 10"
-                      >
-                        <path
-                          stroke="currentColor"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M5 1 1 5l4 4"
-                        /></svg
-                      ><span class="sr-only">Previous</span></span
-                    >
+                      <i
+                        class="fas fa-arrow-circle-left text-white text-xl"
+                      ></i>
+                      <span class="sr-only">Previous</span>
+                    </span>
                   </button>
                   <button
                     type="button"
@@ -1596,22 +1489,11 @@
                     <span
                       class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800/60 hover:bg-gray-700/80 group-focus:ring-4 group-focus:ring-[#8a2be2]/50 group-focus:outline-none"
                     >
-                      <svg
-                        class="w-4 h-4 text-white"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 6 10"
-                      >
-                        <path
-                          stroke="currentColor"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="m1 9 4-4-4-4"
-                        /></svg
-                      ><span class="sr-only">Next</span></span
-                    >
+                      <i
+                        class="fas fa-arrow-circle-right text-white text-xl"
+                      ></i>
+                      <span class="sr-only">Next</span>
+                    </span>
                   </button>
                 </div>
                 <div class="p-5">
@@ -1628,75 +1510,7 @@
             </div>
           </div>
         </section>
-        <section
-          id="awards"
-          class="text-white min-h-screen flex items-center justify-center p-4 sm:p-8"
-        >
-          <div class="w-full max-w-4xl">
-            <div class="mb-10 md:mb-12 text-center md:text-left">
-              <p
-                class="text-sm font-medium text-gray-400 tracking-widest uppercase mb-1"
-              >
-                ACHIEVEMENTS
-              </p>
-              <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold text-white">
-                Awa<span class="text-[#8a2be2]">rds</span>
-              </h1>
-            </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
-              <div
-                class="bg-gray-800 p-6 rounded-lg shadow-lg relative overflow-hidden award-card"
-              >
-                <h2 class="text-xl font-semibold text-white mb-1">
-                  Silver Medalist
-                </h2>
-                <p class="text-sm text-gray-400 mb-3">2014</p>
-                <p class="text-gray-300 text-sm leading-relaxed">
-                  Sumobot Competition (500g Category)- National Robotics
-                  Competition
-                </p>
-              </div>
-
-              <div
-                class="bg-gray-800 p-6 rounded-lg shadow-lg relative overflow-hidden award-card"
-              >
-                <h2 class="text-xl font-semibold text-white mb-1">
-                  Participant
-                </h2>
-                <p class="text-sm text-gray-400 mb-3">2015 - Beijing, China</p>
-                <p class="text-gray-300 text-sm leading-relaxed">
-                  Creative Category - International Robotics Olympiad
-                </p>
-              </div>
-
-              <!-- <div
-                class="bg-gray-800 p-6 rounded-lg shadow-lg relative overflow-hidden award-card"
-              >
-                <h2 class="text-xl font-semibold text-white mb-1">
-                  First Class Performer
-                </h2>
-                <p class="text-sm text-gray-400 mb-3">2022</p>
-                <p class="text-gray-300 text-sm leading-relaxed">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                  eiusmod tempor incididunt ut labore.
-                </p>
-              </div> -->
-
-              <div
-                class="bg-gray-800 p-6 rounded-lg shadow-lg relative overflow-hidden award-card"
-              >
-                <h2 class="text-xl font-semibold text-white mb-1">
-                  1st Runner Up
-                </h2>
-                <p class="text-sm text-gray-400 mb-3">2019</p>
-                <p class="text-gray-300 text-sm leading-relaxed">
-                  Sumobot Competition (3kg Category) - UP Revolutionary Robotics
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
         <section
           id="contact"
           class="bg-black text-gray-300 py-16 sm:py-24 px-4"
@@ -1832,14 +1646,14 @@
         window.onload = () => {
           // Delay the transition by 5 seconds
           setTimeout(() => {
-            // Immediately make main content visible in layout (but still transparent)
+            // Make main content visible in layout and interactive
             mainContent.style.display = "block";
-            mainContent.style.pointerEvents = "auto"; // Enable interaction
+            mainContent.style.pointerEvents = "auto";
 
             // Start fading out the loading screen
             loadingScreen.classList.add("hidden");
 
-            // Start fading in the main content (now that it's display: block)
+            // Start fading in the main content
             mainContent.classList.add("visible");
 
             // After loading screen fades out, remove it completely from the DOM flow
@@ -1850,7 +1664,7 @@
               },
               { once: true }
             );
-          }, 5000); // 5000 milliseconds = 5 seconds
+          }, 3000); // 5000 milliseconds = 5 seconds
         };
       });
 
